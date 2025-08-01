@@ -1,0 +1,50 @@
+## ToggleShovelActive
+local args = {
+	true
+}
+game:GetService("Players").LocalPlayer.Character:WaitForChild("Plastic Pan"):WaitForChild("Scripts"):WaitForChild("ToggleShovelActive"):FireServer(unpack(args))
+
+## Collect
+game:GetService("Players").LocalPlayer.Character:WaitForChild("Plastic Pan"):WaitForChild("Scripts"):WaitForChild("Collect"):InvokeServer()
+
+## Collect Perfect
+local args = {
+	1
+}
+game:GetService("Players").LocalPlayer.Character:WaitForChild("Plastic Pan"):WaitForChild("Scripts"):WaitForChild("Collect"):InvokeServer(unpack(args))
+
+## Deactive ToggleShovelActive
+local args = {
+	false
+}
+game:GetService("Players").LocalPlayer.Character:WaitForChild("Plastic Pan"):WaitForChild("Scripts"):WaitForChild("ToggleShovelActive"):FireServer(unpack(args))
+
+local args1 = {
+	true
+}
+game:GetService("Players").LocalPlayer.Character:WaitForChild("Plastic Pan"):WaitForChild("Scripts"):WaitForChild("ToggleShovelActive"):FireServer(unpack(args1))
+
+game:GetService("Players").LocalPlayer.Character:WaitForChild("Plastic Pan"):WaitForChild("Scripts"):WaitForChild("Collect"):InvokeServer()
+
+local args2 = {
+	1
+}
+game:GetService("Players").LocalPlayer.Character:WaitForChild("Plastic Pan"):WaitForChild("Scripts"):WaitForChild("Collect"):InvokeServer(unpack(args2))
+
+local args3 = {
+	false
+}
+game:GetService("Players").LocalPlayer.Character:WaitForChild("Plastic Pan"):WaitForChild("Scripts"):WaitForChild("ToggleShovelActive"):FireServer(unpack(args3))
+
+
+Script Child: 
+PanServer - Script
+PanClient - LocalScript
+Pan - RemoteFunction
+Collect - RemoteFunction
+ToggleShovelActive - RemoteEvent
+PanFillModule - ModuleScript
+Shake - RemoteEvent
+Sounds - Folder
+Particles - Folder
+PanningComplete - RemoteEvent
