@@ -1,4 +1,20 @@
-local Players = game:GetService("Players")
+local args = {
+	true
+}
+
+local sh = game:GetService("Players").LocalPlayer.Character:WaitForChild("Plastic Pan"):WaitForChild("Scripts"):WaitForChild("ToggleShovelActive"):FireServer(unpack(args))
+print("Shovel:", sh)
+
+local co = game:GetService("Players").LocalPlayer.Character:WaitForChild("Plastic Pan"):WaitForChild("Scripts"):WaitForChild("Collect"):InvokeServer()
+print("Collect:", co)
+
+local args2 = {
+	false
+}
+local sh2 = game:GetService("Players").LocalPlayer.Character:WaitForChild("Plastic Pan"):WaitForChild("Scripts"):WaitForChild("ToggleShovelActive"):FireServer(unpack(args2))
+print("Shovel:", sh2)
+
+/*local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 
 local function getScriptsFolder()
@@ -63,3 +79,4 @@ wait(0.5)
 collect(1)                 -- Collect perfect
 wait(0.5)
 toggleShovelActive(false)  -- Nonaktifkan shovel
+*/

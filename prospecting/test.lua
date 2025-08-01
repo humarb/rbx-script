@@ -11,7 +11,7 @@ local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
 
 print("[DEBUG] Character loaded:", character)
 
-local tool = character:FindFirstChild("Plastic Pan") or player.Backpack:FindFirstChild("Plastic Pan")
+local tool = character:FindFirstChild("Plastic Pan")
 
 if not tool then
     warn("Plastic Pan tidak ditemukan.")
@@ -23,13 +23,13 @@ print("Tool", tool)
 local handle = tool:WaitForChild("Handle")
 local digSound = handle:WaitForChild("Dig")
 
-local scriptsFolder = tool:WaitForChild("Scripts")
+local scriptsFolder = tool:FindFirstChild("Scripts")
 if not scriptsFolder then
     warn("Folder Scripts tidak ditemukan dalam tool.")
     return
 end
 
-local collectRemote = scriptsFolder:WaitForChild("Collect")
+local collectRemote = scriptsFolder:FindFirstChild("Collect")
 local toggleRemote = scriptsFolder:WaitForChild("ToggleShovelActive")
 
 -- Animations
@@ -63,7 +63,8 @@ function startDigging()
 	end
 
 	isDigging = true
-	toggleRemote:FireServer(true)
+	local digSh = toggleRemote:FireServer(true)
+  print(digSh)
 
 	-- Lock movement
 	humanoid.WalkSpeed = 0
