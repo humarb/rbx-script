@@ -72,29 +72,28 @@ local notifRemote = ReplicatedStorage.Remotes.Info.NotificationClient
 local function moveRelative(stud)
   print("Move", stud, "studs")
 	
-	-- Arah ke depan (mengikuti arah karakter menghadap)
-	local direction = humanoidRootPart.CFrame.LookVector.Unit
-	local targetPosition = humanoidRootPart.Position + (direction * stud)
+	-- Simpan arah hadap awal
+	local lookRotation = humanoidRootPart.CFrame - humanoidRootPart.Position
 
-	-- Perintahkan jalan
-	humanoid:MoveTo(targetPosition)
+	-- Hitung posisi target
+	local targetPos = humanoidRootPart.Position + humanoidRootPart.CFrame.LookVector * stud
 
-	-- Tunggu sampai jalan selesai atau timeout 5 detik
-	local finished = false
-	humanoid.MoveToFinished:Connect(function(reached)
-    if reached then
-      print("Karakter berhasil sampai.")
-    else
-      print("Karakter gagal sampai (mungkin terhalang?).")
-    end
-		finished = true
+	-- Gerakkan
+	humanoid:MoveTo(targetPos)
+
+	local reached = false
+	humanoid.MoveToFinished:Connect(function()
+		reached = true
 	end)
 
 	local timeout = 5
 	local start = tick()
-	while not finished and tick() - start < timeout do
+	while not reached and tick() - start < timeout do
 		task.wait(0.1)
 	end
+
+	-- Kembalikan arah hadap awal
+	humanoidRootPart.CFrame = CFrame.new(humanoidRootPart.Position) * lookRotation
 end
 
 local function startDigging()
@@ -198,9 +197,9 @@ local function startPanning()
   -- Loop shake hingga pan kosong
   while fill > 0 do
     shakeRemote:FireServer()
-    print("[DEBUG] Shake, fill sisa:", fill)
-    task.wait(0.25)
+    task.wait(0.35)
     fill = tool:GetAttribute("Fill") or 0
+    print("[DEBUG] Shake, fill sisa:", fill)
   end
 
   -- Hentikan animasi shake

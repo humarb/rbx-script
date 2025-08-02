@@ -1,8 +1,13 @@
-local sh = game:GetService("Players").LocalPlayer.Character:WaitForChild("Plastic Pan"):WaitForChild("Scripts"):WaitForChild("ToggleShovelActive"):FireServer(true)
-print("Shovel:", sh)
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local RunService = game:GetService("RunService")
 
-local co = game:GetService("Players").LocalPlayer.Character:WaitForChild("Plastic Pan"):WaitForChild("Scripts"):WaitForChild("Collect"):InvokeServer()
-print("Collect:", co)
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
 
-local sh2 = game:GetService("Players").LocalPlayer.Character:WaitForChild("Plastic Pan"):WaitForChild("Scripts"):WaitForChild("ToggleShovelActive"):FireServer(false)
-print("Shovel:", sh2)
+local remotes = ReplicatedStorage:WaitForChild("Remotes")
+local shop = remotes:WaitForChild("Shop")
+
+for k, v in pairs(shop:GetChildren()) do
+    print(k, v)
+end

@@ -19,23 +19,29 @@ local args = {
 }
 game:GetService("Players").LocalPlayer.Character:WaitForChild("Plastic Pan"):WaitForChild("Scripts"):WaitForChild("ToggleShovelActive"):FireServer(unpack(args))
 
-local args1 = {
-	true
-}
-game:GetService("Players").LocalPlayer.Character:WaitForChild("Plastic Pan"):WaitForChild("Scripts"):WaitForChild("ToggleShovelActive"):FireServer(unpack(args1))
+## Trigger Pan
+game:GetService("Players").LocalPlayer.Character:WaitForChild("Plastic Pan"):WaitForChild("Scripts"):WaitForChild("Pan"):InvokeServer()
 
-game:GetService("Players").LocalPlayer.Character:WaitForChild("Plastic Pan"):WaitForChild("Scripts"):WaitForChild("Collect"):InvokeServer()
+## Shake
+game:GetService("Players").LocalPlayer.Character:WaitForChild("Plastic Pan"):WaitForChild("Scripts"):WaitForChild("Shake"):FireServer()
 
-local args2 = {
-	1
-}
-game:GetService("Players").LocalPlayer.Character:WaitForChild("Plastic Pan"):WaitForChild("Scripts"):WaitForChild("Collect"):InvokeServer(unpack(args2))
+## Sell Per Item
+local args
+Instance.new("Tool", nil)
+GetService Replicated Storage, WFC Remotes, WFC Shop, WFC SellItem, invokeServer(args)
 
-local args3 = {
-	false
-}
-game:GetService("Players").LocalPlayer.Character:WaitForChild("Plastic Pan"):WaitForChild("Scripts"):WaitForChild("ToggleShovelActive"):FireServer(unpack(args3))
+## Sell Same Type
+local args
+GetService Players. LocalPlayer. Character. WFC Gold
+GetService Replicated Storage, WFC Remotes, WFC Shop, WFC GetInventorySellPrice, invokeServer(args)
 
+local args
+Instance.new("Tool", nil)
+GetService Replicated Storage, WFC Remotes, WFC Shop, WFC SellAll, invokeServer(args)
+
+## Sell All Inventory
+GetService Replicated Storage, WFC Remotes, WFC Shop, WFC GetInventorySellPrice, invokeServer()
+GetService Replicated Storage, WFC Remotes, WFC Shop, WFC SellAll, invokeServer(args)
 
 Script Child: 
 PanServer - Script
@@ -48,3 +54,30 @@ Shake - RemoteEvent
 Sounds - Folder
 Particles - Folder
 PanningComplete - RemoteEvent
+
+Plastic Pan
+Att
+ItemID 2
+NameColor
+Quality
+ItemType
+Fill
+
+Children
+Handle
+Model
+SandSpots
+Animations
+Stats
+Scripts
+Sand
+Rewards
+
+Stats
+Att
+ShakeSpeed 0.8
+Capacity 10
+Toughness 1
+DigAmount 1
+DigSpeed 0.8
+nil
